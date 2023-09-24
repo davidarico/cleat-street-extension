@@ -1,0 +1,28 @@
+body {
+    width: 300px;
+    background-color: #2e2e2e;
+    color: dodgerblue;
+    text-align: center;
+    padding: 0px 10px 10px 10px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+p {
+    font-weight: bold ;
+}
+
+a {
+    color: white;
+}
+
+li {
+    font-size: 18px;
+    padding-bottom: 5px;
+}

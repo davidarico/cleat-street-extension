@@ -1,0 +1,35 @@
+{
+    "name": "Cleat Street Extension",
+    "version": "1.0.0",
+    "description": "Improvements on the Cleat Street App",
+    "manifest_version": 3,
+    "author": "David Arico",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Cleat Street Extension",
+        "default_icon": "icon.png"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://www.cleatstreet.app/*"],
+          "js": ["content.js", "scripts/setBook.js"]
+        }
+    ],
+    "host_permissions": [
+        "https://www.cleatstreet.app/*"
+    ],
+    "permissions": [
+        "activeTab",
+        "contextMenus",
+        "storage"
+    ],
+    "icons": {
+        "48": "icon.png"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": [ "icon.png" ],
+        "matches": [ "https://www.cleatstreet.app/*" ]
+      }
+    ]
+}
