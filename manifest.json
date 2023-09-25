@@ -5,14 +5,19 @@
     "manifest_version": 3,
     "author": "David Arico",
     "action": {
-        "default_popup": "index.html",
+        "default_popup": "pages/index.html",
         "default_title": "Cleat Street Extension",
-        "default_icon": "icon.png"
+        "default_icon": "assets/icon.png"
     },
     "content_scripts": [
         {
           "matches": ["https://www.cleatstreet.app/*"],
-          "js": ["content.js", "scripts/setBook.js"]
+          "js": [
+            "scripts/content.js", 
+            "scripts/setBook.js",
+            "scripts/highlightBets.js",
+            "scripts/flagStale.js"
+          ]
         }
     ],
     "host_permissions": [
@@ -25,11 +30,11 @@
         "scripting"
     ],
     "icons": {
-        "48": "icon.png"
+        "48": "assets/icon.png"
     },
     "web_accessible_resources": [
       {
-        "resources": [ "icon.png" ],
+        "resources": [ "assets/icon.png" ],
         "matches": [ "https://www.cleatstreet.app/*" ]
       }
     ]
