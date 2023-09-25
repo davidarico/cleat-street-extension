@@ -11,6 +11,10 @@ What should my approach be?
     Also will need to add a onclick event on the bet button to set the background since the bet amount doesnt change
 */
 
+const logBetChangeColor = (event) => {
+    event.target.closest('tr').style.backgroundColor = '#83f28f'
+}
+
 /**
  * Finds all the table rows with 0 dollar bet amounts and sets them to green
  */
@@ -21,6 +25,12 @@ const setTableRowBackground = () => {
             tr.style.backgroundColor = '#83f28f'
         }
     }
+
+    const logBetButtons = document.getElementsByClassName('log-bet-btn')
+    for (const button of logBetButtons) {
+        button.addEventListener('click', logBetChangeColor)
+    }
+
 }
 
 const observer = new MutationObserver(setTableRowBackground);

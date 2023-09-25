@@ -4,7 +4,6 @@
  * Adds events to the two book filter options and stores selections
  * Stores values in the chrome local storage
  */
-console.log('setBook loaded')
 
 function handleInputEvent(event) {
     let storeObject = {}

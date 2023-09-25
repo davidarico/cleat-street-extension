@@ -2,7 +2,7 @@
 
 ## Feature list
 - [X] Remember what books have been selected between refreshes
-- [ ] Highlighting rows of bets already met
+- [X] Highlighting rows of bets already met
 - [ ] Ability to mark stale bets
 - [ ] Dark mode
 
