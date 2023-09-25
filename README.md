@@ -4,6 +4,7 @@
 - [X] Remember what books have been selected between refreshes
 - [ ] Highlighting rows of bets already met
 - [ ] Ability to mark stale bets
+- [ ] Dark mode
 
 ## How to install
 1. Open Chrome Extensions

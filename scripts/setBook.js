@@ -18,7 +18,7 @@ function handleInputEvent(event) {
 }
   
 // Function to observe changes to the DOM
-function observeDOM() {
+const observeDOM = () => {
     const targetNode = document;
   
     // Create a new MutationObserver
