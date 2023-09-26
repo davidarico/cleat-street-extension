@@ -3,7 +3,8 @@
 ## Feature list
 - [X] Remember what books have been selected between refreshes
 - [X] Highlighting rows of bets already met
-- [ ] Ability to mark stale bets
+- [X] Ability to mark stale bets
+- [ ] Add help bubble on the page to explain commands
 - [ ] Dark mode
 
 ## How to install

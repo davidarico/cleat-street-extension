@@ -15,8 +15,7 @@
           "js": [
             "scripts/content.js", 
             "scripts/setBook.js",
-            "scripts/highlightBets.js",
-            "scripts/flagStale.js"
+            "scripts/highlightBets.js"
           ]
         }
     ],
