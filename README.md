@@ -4,6 +4,7 @@
 - [X] Remember what books have been selected between refreshes
 - [X] Highlighting rows of bets already met
 - [X] Ability to mark stale bets
+- [ ] Add colorblind mode for Chris
 - [ ] Add help bubble on the page to explain commands
 - [ ] Dark mode
 
