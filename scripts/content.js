@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
 
 // listening for ctrl + t to toggle the training button
 document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.key === 't') {
+    if (event.altKey && event.key === 't') {
         const training = [...document.querySelectorAll('[class="button-container"] button')].find(x => x.innerText === 'Training' || 'Production')
         // Toggling between hidden and not
         training.style.display = training.style.display === 'none' ? 'initial' : 'none'

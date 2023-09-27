@@ -17,14 +17,21 @@ Recommended to use git if you have it. This way you can refresh using git comman
 2. `cd` (change directory) in the command line to desired folder
 
     `cd %HOMEPATH%/Documents` might be a good place if using Windows Command Line
-    
+
     `cd ~/Documents` if using git bash (**recommended**)
 3. Run `git clone https://github.com/davidarico/cleat-street-extension.git` to get the repo
-4. Open Chrome Extensions
-5. Toggle Developer Mode in the top right corner
-6. Click "Load Unpacked"
-7. Open the folder where the extension is saved
-8. Should be loaded and if the cleatstreet app is open refresh it
+
+#### If **not** using git
+1. Click on the green button "Code"
+2. Click "Download ZIP"
+3. Unpack ZIP file
+
+#### Installing
+1. Open Chrome Extensions
+2. Toggle Developer Mode in the top right corner
+3. Click "Load Unpacked"
+4. Open the folder where the extension is saved
+5. Should be loaded and if the cleatstreet app is open refresh it
 
 ## Updating via git
 1. Open your perfered command line once again

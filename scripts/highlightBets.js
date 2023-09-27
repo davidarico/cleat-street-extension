@@ -105,7 +105,7 @@ observer.observe(document.body, observerOptions);
 
 // adding an event listener for ctrl+s to mark as stale
 document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.key === 's') {
+    if (event.altKey && event.key === 's') {
         chrome.storage.local.get(STALE_LOG_KEY, (result) => {
             // getting selected rows
             const selectedRows = document.getElementsByClassName(SELECTED_BET_CLASS)
