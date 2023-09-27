@@ -15,7 +15,9 @@ Recommended to use git if you have it. This way you can refresh using git comman
 1. Open Command line (windows key then type in "cmd", press enter)
     If using the non-native install git bash type "bash" instead
 2. `cd` (change directory) in the command line to desired folder
+
     `cd %HOMEPATH%/Documents` might be a good place if using Windows Command Line
+    
     `cd ~/Documents` if using git bash (**recommended**)
 3. Run `git clone https://github.com/davidarico/cleat-street-extension.git` to get the repo
 4. Open Chrome Extensions
@@ -27,7 +29,9 @@ Recommended to use git if you have it. This way you can refresh using git comman
 ## Updating via git
 1. Open your perfered command line once again
 2. `cd` into your repo (the folder)
+
     `cd %HOMEPATH%/Documents/cleat-street-extension` if using windows command line and destination is one used above
+
     `cd ~/Documents/cleat-street-extension` if using git bash
 3. Run `git fetch` then `git rebase`
 4. Go into the manage chrome extensions page
