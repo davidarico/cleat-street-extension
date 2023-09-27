@@ -5,6 +5,8 @@
  * Stores values in the chrome local storage
  */
 
+const SELECTED_CLASS = 'cs-ext-selected'
+
 function handleInputEvent(event) {
     let storeObject = {}
     storeObject[event.target.value] = event.target.checked
@@ -25,14 +27,11 @@ const observeDOM = () => {
       for (const mutation of mutationsList) {
         // Check if a new input element has been added to the DOM
         if (mutation.type === "childList") {
-            const inputElements = targetNode.getElementsByName("bookTypeFilter");
+            const inputElements = targetNode.querySelectorAll(`[name="bookTypeFilter"]:not(.${SELECTED_CLASS})`);
             if (inputElements.length) {
                 inputElements.forEach((inputElement) => {
-                    if (!inputElement.hasAttribute("data-input-listener")) {
-                        // Add a custom attribute to avoid adding the listener multiple times
-                        inputElement.setAttribute("data-input-listener", "true");
-                        inputElement.addEventListener("input", handleInputEvent);
-                    }
+                    inputElement.addEventListener("input", handleInputEvent);
+                    inputElement.classList.add(SELECTED_CLASS)
                 });
 
                 chrome.storage.local.get(['regulated', 'unregulated'], function(result) {
