@@ -5,7 +5,7 @@
  * Stores values in the chrome local storage
  */
 
-const SELECTED_CLASS = 'cs-ext-selected'
+const SELECTED_BUTTON_CLASS = 'cs-ext-selected-button'
 
 function handleInputEvent(event) {
     let storeObject = {}
@@ -27,11 +27,11 @@ const observeDOM = () => {
       for (const mutation of mutationsList) {
         // Check if a new input element has been added to the DOM
         if (mutation.type === "childList") {
-            const inputElements = targetNode.querySelectorAll(`[name="bookTypeFilter"]:not(.${SELECTED_CLASS})`);
+            const inputElements = targetNode.querySelectorAll(`[name="bookTypeFilter"]:not(.${SELECTED_BUTTON_CLASS})`);
             if (inputElements.length) {
                 inputElements.forEach((inputElement) => {
                     inputElement.addEventListener("input", handleInputEvent);
-                    inputElement.classList.add(SELECTED_CLASS)
+                    inputElement.classList.add(SELECTED_BUTTON_CLASS)
                 });
 
                 chrome.storage.local.get(['regulated', 'unregulated'], function(result) {
