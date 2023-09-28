@@ -120,6 +120,9 @@ document.addEventListener('keydown', function(event) {
                     if (row.querySelector('input[placeholder="$0.00"]')) {
                         row.style.backgroundColor = BET_MADE_COLOR
                     }
+                    else {
+                        row.style.backgroundColor = null // resetting it back to normal
+                    }
                 }
                 else {
                     row.style.backgroundColor = STALE_BET_COLOR
