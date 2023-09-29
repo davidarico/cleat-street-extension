@@ -11,9 +11,26 @@ const BET_MADE_COLOR = '#83f28f'
 const SELECTED_BET_CLASS = 'cs-ext-selected'
 const STALE_BET_COLOR = '#f88'
 const STALE_LOG_KEY = 'staleLog'
+const BET_LOG_KEY = 'betLog'
 
 const logBetChangeColor = (event) => {
-    event.target.closest('tr').style.backgroundColor = BET_MADE_COLOR
+    const row = event.target.closest('tr')
+    row.style.backgroundColor = BET_MADE_COLOR
+
+    // storing logged bets
+    const rowId = getIdFromRow(row)
+    chrome.storage.local.get(BET_LOG_KEY, (result) => {
+        const betLog = result[BET_LOG_KEY]
+
+        betLog.betsTaken[rowId] = true
+
+        // writing new data
+        chrome.storage.local.set({ betLog }, () => {
+            if (chrome.runtime.lastError) {
+              console.error(chrome.runtime.lastError);
+            }
+        })
+    })
 }
 
 const addSelectedClass = (event) => {
@@ -47,21 +64,39 @@ const getIdFromRow = (element) => {
 const setTableRowBackground = () => {
     const today = new Date().toISOString().split('T')[0];
     
-    chrome.storage.local.get(STALE_LOG_KEY, (result) => {
+    chrome.storage.local.get([STALE_LOG_KEY, BET_LOG_KEY], (result) => {
         if (chrome.runtime.lastError) {
             console.error(chrome.runtime.lastError);
             return;
         }
 
-        let staleLog = result['staleLog']
+        let staleLog = result[STALE_LOG_KEY]
         if (!staleLog || staleLog.date !== today) {
-            staleLog =  {
+            staleLog = {
                 date: today,
                 markedStale: {}
             }
 
             // Writing new stale log for the day
             chrome.storage.local.set({ staleLog }, () => {
+                if (chrome.runtime.lastError) {
+                  console.error(chrome.runtime.lastError);
+                } 
+                else {
+                  console.log('Data for yesterday deleted');
+                }
+            })
+        }
+
+        let betLog = result[BET_LOG_KEY]
+        if (!betLog || betLog.date !== today) {
+            betLog = {
+                date: today,
+                betsTaken: {}
+            }
+
+            // Writing new bet log for the day
+            chrome.storage.local.set({ betLog }, () => {
                 if (chrome.runtime.lastError) {
                   console.error(chrome.runtime.lastError);
                 } 
@@ -79,7 +114,9 @@ const setTableRowBackground = () => {
             if (staleLog.markedStale[rowId]) {
                 tr.style.backgroundColor = STALE_BET_COLOR
             }
-            // TODO: keep track of bets made so I dont need to rely on placeholder text
+            else if (betLog.betsTaken[rowId]) {
+                tr.style.backgroundColor = BET_MADE_COLOR
+            }
             else if (tr.querySelector('input[placeholder="$0.00"]')) {
                 tr.style.backgroundColor = BET_MADE_COLOR
             }
