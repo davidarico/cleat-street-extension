@@ -38,7 +38,13 @@ const addSelectedClass = (event) => {
     if (!tr) {
         return
     }
-    tr.classList.add(SELECTED_BET_CLASS)
+
+    if (tr.classList.contains(SELECTED_BET_CLASS)) {
+        tr.classList.remove(SELECTED_BET_CLASS)
+    }
+    else {
+        tr.classList.add(SELECTED_BET_CLASS)
+    }
 }
 
 /**
