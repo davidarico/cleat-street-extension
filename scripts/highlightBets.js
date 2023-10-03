@@ -137,15 +137,6 @@ const setTableRowBackground = () => {
     })
 }
 
-const observer = new MutationObserver(setTableRowBackground);
-
-const observerOptions = {
-  childList: true,
-  subtree: true
-};
-
-observer.observe(document.body, observerOptions);
-
 // adding an event listener for ctrl+s to mark as stale
 document.addEventListener('keydown', function(event) {
     if ((event.altKey && event.key === 's') || event.key === 'ß') {

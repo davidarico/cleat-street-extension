@@ -7,7 +7,7 @@
 
 const SELECTED_BUTTON_CLASS = 'cs-ext-selected-button'
 
-function handleInputEvent(event) {
+const handleInputEvent = (event) => {
     let storeObject = {}
     storeObject[event.target.value] = event.target.checked
 
@@ -17,17 +17,13 @@ function handleInputEvent(event) {
         }
     });
 }
-  
-// Function to observe changes to the DOM
-const observeDOM = () => {
-    const targetNode = document;
-  
-    // Create a new MutationObserver
-    const observer = new MutationObserver(function (mutationsList) {
-      for (const mutation of mutationsList) {
+
+// function called upon update
+const setBookUpdate = (mutationsList) => {
+    for (const mutation of mutationsList) {
         // Check if a new input element has been added to the DOM
         if (mutation.type === "childList") {
-            const inputElements = targetNode.querySelectorAll(`[name="bookTypeFilter"]:not(.${SELECTED_BUTTON_CLASS})`);
+            const inputElements = document.querySelectorAll(`[name="bookTypeFilter"]:not(.${SELECTED_BUTTON_CLASS})`);
             if (inputElements.length) {
                 inputElements.forEach((inputElement) => {
                     inputElement.addEventListener("input", handleInputEvent);
@@ -53,13 +49,5 @@ const observeDOM = () => {
                 });
             }
         }
-      }
-    });
-  
-    // Configure and start the observer
-    const config = { childList: true, subtree: true };
-    observer.observe(targetNode, config);
+    }
 }
-  
-// Start observing the DOM for changes
-observeDOM();  
