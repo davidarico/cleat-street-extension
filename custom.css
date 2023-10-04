@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.cs-ext-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 200px;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+}
+
+.cs-ext-modal ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cs-ext-modal ul li {
+    margin-bottom: 10px;
+}
+
+.cs-ext-modal ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.cs-ext-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}

@@ -6,6 +6,8 @@
  */
 
 const SELECTED_BUTTON_CLASS = 'cs-ext-selected-button'
+const UNREGULATED_KEY = 'unregulated'
+const REGULATED_KEY = 'regulated'
 
 const handleInputEvent = (event) => {
     let storeObject = {}
@@ -30,7 +32,7 @@ const setBookUpdate = (mutationsList) => {
                     inputElement.classList.add(SELECTED_BUTTON_CLASS)
                 });
 
-                chrome.storage.local.get(['regulated', 'unregulated'], function(result) {
+                chrome.storage.local.get([REGULATED_KEY, UNREGULATED_KEY], function(result) {
                     if (chrome.runtime.lastError) {
                         console.error(chrome.runtime.lastError);
                     } 
@@ -38,11 +40,11 @@ const setBookUpdate = (mutationsList) => {
                         // Super hacky but setting the attribute checked doesnt work in react
                         // Needs to be a click but domestic will always be clicked
                         // So checking International then checking if Domestic needs to be unchecked
-                        if (result['unregulated'] && !inputElements[1].checked) {
+                        if (result[UNREGULATED_KEY] && !inputElements[1].checked) {
                             inputElements[1].click()
                         }
 
-                        if (!result['regulated'] && inputElements[0].checked) {
+                        if (!result[REGULATED_KEY] && inputElements[0].checked) {
                             inputElements[0].click()
                         }
                     }

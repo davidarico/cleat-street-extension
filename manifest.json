@@ -14,9 +14,14 @@
           "matches": ["https://www.cleatstreet.app/*"],
           "js": [
             "scripts/setBook.js",
-            "scripts/highlightBets.js",
+            "scripts/colorBlind.js",
             "scripts/darkMode.js", 
+            "scripts/highlightBets.js",
+            "scripts/options.js",
             "scripts/content.js"
+          ],
+          "css": [
+            "custom.css"
           ]
         }
     ],

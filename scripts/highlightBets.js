@@ -7,9 +7,10 @@
  * Also contains the ability for a user to flag stale bets
  */
 
-const BET_MADE_COLOR = '#83f28f'
+const BET_MADE_COLOR = '#83F28F'
 const SELECTED_BET_CLASS = 'cs-ext-selected'
-const STALE_BET_COLOR = '#f88'
+const STALE_BET_COLOR = '#F88'
+const COLOR_BLIND_STALE_BET_COLOR = '#FF0000'
 const STALE_LOG_KEY = 'staleLog'
 const BET_LOG_KEY = 'betLog'
 

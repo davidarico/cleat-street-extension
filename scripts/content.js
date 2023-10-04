@@ -6,7 +6,7 @@
 
 const setShaun  = () => {
     const icon = document.querySelector('[class="navbar-brand"] img')
-    if (!icon.classList.contains('cs-ext-shaun')) {
+    if (icon && !icon.classList.contains('cs-ext-shaun')) {
         icon.src = chrome.runtime.getURL('assets/icon.png')
         icon.classList.add('cs-ext-shaun')
     }
@@ -18,10 +18,13 @@ const setShaun  = () => {
  */
 const observeBody = () => {
     const observer = new MutationObserver((mutationsList) => { 
-        setBookUpdate(mutationsList)
-        setTableRowBackground()
-        setShaun()
-        addDarkModeToggle()
+        Promise.all([
+            setBookUpdate(mutationsList),
+            setTableRowBackground(),
+            setShaun(),
+            addDarkModeToggle(),
+            createOptionsMenu()
+        ])
     })
 
     const config = { childList: true, subtree: true };
@@ -32,7 +35,7 @@ observeBody()
 
 // listening for ctrl + t to toggle the training button
 document.addEventListener('keydown', function(event) {
-    if (event.altKey && event.key === 't') {
+    if ((event.altKey && event.key === 't') || event.key === '†') {
         const training = [...document.querySelectorAll('[class="button-container"] button')].find(x => x.innerText === 'Training' || 'Production')
         // Toggling between hidden and not
         training.style.display = training.style.display === 'none' ? 'initial' : 'none'
