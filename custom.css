@@ -12,6 +12,7 @@ body {
     background-color: white;
     padding: 20px;
     z-index: 1000;
+    border-radius: 10px;
 }
 
 .modal-content {
@@ -19,8 +20,19 @@ body {
 }
 
 .close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
     float: right;
-    cursor: pointer;
+    right: 0;
+    text-align: center;
+    background: lightblue;
+    line-height: 18px;
+    border-radius: 18px;
+}
+
+.options-container {
+    margin-top: 20px;
 }
 
 .cs-ext-modal ul {

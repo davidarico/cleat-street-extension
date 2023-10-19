@@ -14,9 +14,16 @@ const COLOR_BLIND_STALE_BET_COLOR = '#FF0000'
 const STALE_LOG_KEY = 'staleLog'
 const BET_LOG_KEY = 'betLog'
 
+/**
+ * 
+ * @param {Event} event 
+ */
 const logBetChangeColor = (event) => {
     const row = event.target.closest('tr')
     row.style.backgroundColor = BET_MADE_COLOR
+
+    // setting the curson type to prohibit
+    event.target.style.cursor = 'not-allowed'
 
     // storing logged bets
     const rowId = getIdFromRow(row)

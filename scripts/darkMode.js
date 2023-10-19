@@ -4,11 +4,15 @@
  * Implementation of a dark mode
  */
 
+let isDarkMode = false
+
 /**
- * Addes the toggle dark mode button to the header
+ * Toggles the state of dark mode
+ * 
+ * @param {Event} event
  * 
  * @returns void
  */
-const addDarkModeToggle = () => [
-    console.log('dark mode')
-]
+const toggleDarkMode = (event) => {
+    isDarkMode = event.target.checked
+}
