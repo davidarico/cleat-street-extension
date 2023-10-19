@@ -18,6 +18,7 @@
             "scripts/darkMode.js", 
             "scripts/highlightBets.js",
             "scripts/options.js",
+            "scripts/autoRefresh.js",
             "scripts/content.js"
           ],
           "css": [

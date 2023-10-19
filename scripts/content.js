@@ -22,7 +22,8 @@ const observeBody = () => {
             setBookUpdate(mutationsList),
             setTableRowBackground(),
             setShaun(),
-            createOptionsMenu()
+            createOptionsMenu(),
+            addAutoRefreshIcon()
         ])
     })
 
