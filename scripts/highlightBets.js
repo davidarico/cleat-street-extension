@@ -26,7 +26,7 @@ const logBetChangeColor = (event) => {
     event.target.style.cursor = 'not-allowed'
 
     // storing logged bets
-    const rowId = getIdFromRow(row)
+    const rowId = getBetPlacedIdFromRow(row)
     chrome.storage.local.get(BET_LOG_KEY, (result) => {
         const betLog = result[BET_LOG_KEY]
 
@@ -72,6 +72,17 @@ const getIdFromRow = (element) => {
     return id
 }
 
+const getBetPlacedIdFromRow = (element) => {
+    const tds = element.querySelectorAll('td')
+    // id is => (date 0) (book 2) (game 2) (type 4) (team 5) (player 6) (side 7)
+    // not the best solution but all i can think at this moment
+    const id = `${tds[0].innerText}${tds[2].innerText}${tds[3].innerText}${tds[4].innerText}${tds[5].innerText}${tds[6].innerText}${tds[7].innerText}`
+        .toLowerCase()
+        .replace(/[^a-z0-9]/gm, '')
+
+    return id
+}
+
 /**
  * Finds all the table rows with 0 dollar bet amounts and sets them to green
  */
@@ -97,7 +108,7 @@ const setTableRowBackground = () => {
                   console.error(chrome.runtime.lastError);
                 } 
                 else {
-                  console.log('Data for yesterday deleted');
+                  console.log('staleLog data for yesterday deleted');
                 }
             })
         }
@@ -115,7 +126,7 @@ const setTableRowBackground = () => {
                   console.error(chrome.runtime.lastError);
                 } 
                 else {
-                  console.log('Data for yesterday deleted');
+                  console.log('betLog data for yesterday deleted');
                 }
             })
         }
@@ -123,12 +134,13 @@ const setTableRowBackground = () => {
         const trElements = document.querySelectorAll('tr:has(td)')
     
         for (const tr of trElements) {
-            const rowId = getIdFromRow(tr)
+            const staleRowId = getIdFromRow(tr)
+            const placedRowId = getBetPlacedIdFromRow(tr)
 
-            if (staleLog.markedStale[rowId]) {
+            if (staleLog.markedStale[staleRowId]) {
                 tr.style.backgroundColor = STALE_BET_COLOR
             }
-            else if (betLog.betsTaken[rowId]) {
+            else if (betLog.betsTaken[placedRowId]) {
                 tr.style.backgroundColor = BET_MADE_COLOR
             }
             else if (tr.querySelector('input[placeholder="$0.00"]')) {

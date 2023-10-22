@@ -23,7 +23,8 @@ const observeBody = () => {
             setTableRowBackground(),
             setShaun(),
             createOptionsMenu(),
-            addAutoRefreshIcon()
+            addAutoRefreshIcon(),
+            checkForNewBets()
         ])
     })
 
