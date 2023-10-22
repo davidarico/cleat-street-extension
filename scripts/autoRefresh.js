@@ -68,7 +68,7 @@ const toggleAutoRefresh = () => {
 }
 
 document.addEventListener('keydown', event => {
-    if ((event.altKey && event.key === 'a') || event.key === 'ß') {
+    if ((event.altKey && event.key === 'a') || event.key === 'å') {
         toggleAutoRefresh()
     }
 })
