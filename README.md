@@ -1,7 +1,8 @@
 # Not Cleat Street Extension
 
 Nothing in this repo is best practice and creating a chrome extension is incredibly hacky
-    Nonetheless hope this is useful for traders
+
+Nonetheless hope this is useful for traders
 
 ## Feature list
 - [X] Remember what books have been selected between refreshes
