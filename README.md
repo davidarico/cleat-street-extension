@@ -12,7 +12,7 @@ Nonetheless hope this is useful for traders
 - [ ] Add help bubble on the page to explain commands
 - [ ] Dark mode
 - [ ] Add support for marking parlays
-- [ ] Auto refresh ability and highlight new bets
+- [X] Auto refresh ability and highlight new bets
 
 ## How to install
 Recommended to use git if you have it. This way you can refresh using git commands (more info below)
