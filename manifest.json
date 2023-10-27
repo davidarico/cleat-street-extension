@@ -11,7 +11,7 @@
     },
     "content_scripts": [
         {
-          "matches": ["https://www.cleatstreet.app/*"],
+          "matches": [ "https://www.cleatstreet.app/*" ],
           "js": [
             "scripts/setBook.js",
             "scripts/colorBlind.js",
@@ -23,6 +23,20 @@
           ],
           "css": [
             "custom.css"
+          ]
+        },
+        {
+          "matches": [
+            "https://*.mybookie.ag/*",
+            "https://*.bovada.lv/*",
+            "https://www.betus.com.pa/*",
+            "https://*.heritagesports.eu/*",
+            "https://*.betonline.ag/*",
+            "https://www.sportsbetting.ag/*",
+            "https://sports.betanysports.eu/*"
+          ],
+          "js": [
+            "scripts/refershPropBuilder.js"
           ]
         }
     ],
