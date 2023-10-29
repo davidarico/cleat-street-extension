@@ -69,9 +69,9 @@ const toggleAutoRefresh = () => {
 
 const getRowId = (element) => {
     const tds = element.querySelectorAll('td')
-    // id is => (date 0) (book 2) (game 2) (type 4) (team 5) (player 6) (side 7)
+    // id is => (book 2) (game 3) (type 4) (team 5) (player 6) (side 7)
     // not the best solution but all i can think at this moment
-    const id = `${tds[0].innerText}${tds[2].innerText}${tds[3].innerText}${tds[4].innerText}${tds[5].innerText}${tds[6].innerText}${tds[7].innerText}`
+    const id = `${tds[2].innerText}${tds[3].innerText}${tds[4].innerText}${tds[5].innerText}${tds[6].innerText}${tds[7].innerText}`
         .toLowerCase()
         .replace(/[^a-z0-9]/gm, '')
 
@@ -82,7 +82,6 @@ const handleRefresh = (mutationsList) => {
     mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
           mutation.addedNodes.forEach((node) => {
-            console.log(node)
             if (node.tagName && node.tagName.toLowerCase() === 'tr') {
               checkForNewBets()
             }
@@ -137,7 +136,6 @@ chrome.storage.local.get(SEEN_BETS_KEY, (result) => {
     const today = new Date().toISOString().split('T')[0];
 
     let seenBets = result[SEEN_BETS_KEY]
-    console.log(seenBets)
 
     if (!seenBets || seenBets.date !== today) {
         seenBets = {
@@ -145,7 +143,7 @@ chrome.storage.local.get(SEEN_BETS_KEY, (result) => {
             bets: {}
         }
 
-        // Writing new stale log for the day
+        // Writing new seen bets for the day
         chrome.storage.local.set({ seenBets }, () => {
             if (chrome.runtime.lastError) {
               console.error(chrome.runtime.lastError);

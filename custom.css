@@ -29,6 +29,7 @@ body {
     background: lightblue;
     line-height: 18px;
     border-radius: 18px;
+    cursor: pointer;
 }
 
 .options-container {

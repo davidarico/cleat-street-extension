@@ -27,6 +27,24 @@ const loadDarkModeSettings = (input) => {
 
 }
 
+const downloadDataForDavid = () => {
+    chrome.storage.local.get(['seenBets', 'staleLog', 'betLog', 'unregulated', 'regulated'], result => {
+        var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(result));
+        var downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute('href', dataStr);
+        downloadAnchorNode.setAttribute('download', 'debugData.json');
+        document.body.appendChild(downloadAnchorNode); // required for firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();    
+    })
+}
+
+const logData = () => {
+    chrome.storage.local.get(['seenBets', 'staleLog', 'betLog', 'unregulated', 'regulated'], result => {
+        console.log(result)
+    })
+}
+
 /**
  * Creates the option menu
  */
@@ -49,6 +67,8 @@ const createOptionsMenu = () => {
                             <label for="colorBlind">Color Blind Mode</label>
                         </li>
                     </ul>
+                    <button id="dataForDavid" type="button">Data for David</button>
+                    <button id="logData" type="button">Log Data</button>
                 </div>
             </div>
         `
@@ -57,6 +77,12 @@ const createOptionsMenu = () => {
         optionModal.querySelector('.close').addEventListener('click', toggleModal)
         const darkModeInput = optionModal.querySelector('#darkMode')
         darkModeInput.addEventListener('change', toggleDarkMode)
+
+        const dataForDavidButton = optionModal.querySelector('#dataForDavid')
+        dataForDavidButton.addEventListener('click', downloadDataForDavid)
+
+        const logDataButton = optionModal.querySelector('#logData')
+        logDataButton.addEventListener('click', logData)
 
         const overlay = document.createElement('div')
         overlay.classList.add(OPTIONS_OVERLAY_CLASS)
