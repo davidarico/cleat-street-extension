@@ -87,7 +87,7 @@ const getBetPlacedIdFromRow = (element) => {
  * Finds all the table rows with 0 dollar bet amounts and sets them to green
  */
 const setTableRowBackground = () => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString().replaceAll('/', '-')
     
     chrome.storage.local.get([STALE_LOG_KEY, BET_LOG_KEY], (result) => {
         if (chrome.runtime.lastError) {

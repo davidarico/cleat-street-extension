@@ -133,7 +133,7 @@ chrome.storage.local.get(SEEN_BETS_KEY, (result) => {
         return;
     }
 
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString().replaceAll('/', '-')
 
     let seenBets = result[SEEN_BETS_KEY]
 
