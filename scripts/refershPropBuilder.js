@@ -29,7 +29,9 @@ window.addEventListener('blur', () => {
     if (validUrls.find(x => location.href.includes(x))) {
         console.log('Starting refresh countdown')
         refreshIntervalId = setInterval(() => {
-            location.reload()
+            if (!document.hasFocus()) {ß
+                location.reload()
+            }
         }, 180000)
     }
 })

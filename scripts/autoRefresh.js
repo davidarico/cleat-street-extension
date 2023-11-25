@@ -27,6 +27,8 @@ const addAutoRefreshIcon = () => {
 
         const refreshSpan = document.createElement('div')
         refreshSpan.classList.add(REFRESH_ICON_CLASS) // &#x274c;
+        refreshSpan.addEventListener('click', toggleAutoRefresh)
+
         if (refreshOn) {
             refreshSpan.innerHTML = `
                 <span class="${X_ICON_CLASS} ${REFRESH_ON}">${ON_ICON}</span>
