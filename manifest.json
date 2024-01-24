@@ -24,20 +24,6 @@
           "css": [
             "custom.css"
           ]
-        },
-        {
-          "matches": [
-            "https://*.mybookie.ag/*",
-            "https://*.bovada.lv/*",
-            "https://www.betus.com.pa/*",
-            "https://*.heritagesports.eu/*",
-            "https://*.betonline.ag/*",
-            "https://www.sportsbetting.ag/*",
-            "https://sports.betanysports.eu/*"
-          ],
-          "js": [
-            "scripts/refershPropBuilder.js"
-          ]
         }
     ],
     "host_permissions": [
